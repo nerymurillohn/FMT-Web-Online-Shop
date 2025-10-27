@@ -2,6 +2,10 @@
 
 Forestal MT website+ecommerce development for launch-ready.
 
+## Project Blueprint
+
+For the end-to-end architecture, environment strategy, and implementation roadmap, review [`docs/project-blueprint.md`](docs/project-blueprint.md).
+
 ---
 
 ## Who We Are
