@@ -2,29 +2,6 @@
 
 Forestal MT website+ecommerce development for launch-ready.
 
-## Monorepo Kickoff
-
-This repository now uses a Turborepo + pnpm workspace so we can scale into multiple applications and shared packages. The
-initial storefront lives in [`apps/web`](apps/web) and is powered by **Next.js 14 (App Router)** with Tailwind CSS and Vitest
-for component testing.
-
-### Getting Started
-
-```bash
-pnpm install
-pnpm dev
-```
-
-### Quality Gates
-
-```bash
-pnpm lint   # Runs next lint in the web app
-pnpm test   # Executes Vitest with jsdom + Testing Library
-```
-
-The workspace is orchestrated through [`turbo.json`](turbo.json) so additional apps and packages can plug into the same build,
-lint, and test pipelines.
-
 ## Project Blueprint
 
 For the end-to-end architecture, environment strategy, and implementation roadmap, review [`docs/project-blueprint.md`](docs/project-blueprint.md).
