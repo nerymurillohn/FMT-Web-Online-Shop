@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+
 export function Hero() {
   return (
     <section className="flex flex-col gap-8 rounded-3xl border border-forest-700/50 bg-forest-900/40 p-10 shadow-lg shadow-black/40 backdrop-blur-sm sm:p-16">
