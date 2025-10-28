@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import React from "react";
 
 export function Hero() {
   return (
@@ -14,6 +14,14 @@ export function Hero() {
         total transparency from forest to customer, empowering conscious brands and practitioners worldwide.
       </p>
       <div className="flex flex-wrap gap-4">
+        <a
+          href="#catalog"
+          className="rounded-full bg-forest-500 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-forest-950 transition hover:bg-forest-400"
+        >
+          Explore Catalog
+        </a>
+        <a
+          href="#story"
         <Link
           href="/#catalog"
           className="rounded-full bg-forest-500 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-forest-950 transition hover:bg-forest-400"
@@ -25,7 +33,7 @@ export function Hero() {
           className="rounded-full border border-forest-400 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-forest-100 transition hover:border-forest-200 hover:text-forest-50"
         >
           Discover Our Story
-        </Link>
+        </a>
       </div>
     </section>
   );
