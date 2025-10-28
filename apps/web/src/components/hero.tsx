@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 export function Hero() {
   return (
     <section className="flex flex-col gap-8 rounded-3xl border border-forest-700/50 bg-forest-900/40 p-10 shadow-lg shadow-black/40 backdrop-blur-sm sm:p-16">
@@ -14,18 +12,18 @@ export function Hero() {
         total transparency from forest to customer, empowering conscious brands and practitioners worldwide.
       </p>
       <div className="flex flex-wrap gap-4">
-        <Link
+        <a
           href="#catalog"
           className="rounded-full bg-forest-500 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-forest-950 transition hover:bg-forest-400"
         >
           Explore Catalog
-        </Link>
-        <Link
+        </a>
+        <a
           href="#story"
           className="rounded-full border border-forest-400 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-forest-100 transition hover:border-forest-200 hover:text-forest-50"
         >
           Discover Our Story
-        </Link>
+        </a>
       </div>
     </section>
   );
