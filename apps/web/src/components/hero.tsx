@@ -22,6 +22,14 @@ export function Hero() {
         </a>
         <a
           href="#story"
+        <Link
+          href="/#catalog"
+          className="rounded-full bg-forest-500 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-forest-950 transition hover:bg-forest-400"
+        >
+          Explore Catalog
+        </Link>
+        <Link
+          href="/#story"
           className="rounded-full border border-forest-400 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-forest-100 transition hover:border-forest-200 hover:text-forest-50"
         >
           Discover Our Story
