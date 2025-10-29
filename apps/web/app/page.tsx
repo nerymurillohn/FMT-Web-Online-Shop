@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "Shopify",
     "DHL Express",
     "batana oil",
-    "melipona honey",
+    "stingless bee honey",
     "Honduras exports"
   ],
   openGraph: {
@@ -45,10 +45,10 @@ const PRODUCT_LINES: ProductLine[] = [
     alt: "Stylized gradient background representing batana oil"
   },
   {
-    title: "Melipona Honey",
+    title: "Stingless Bee Honey",
     description: "Raw stingless bee honey treasured by the Mayans for holistic wellness.",
     image: "/images/melipona-placeholder.svg",
-    alt: "Amber gradient background symbolizing melipona honey"
+    alt: "Amber gradient background symbolizing stingless bee honey"
   },
   {
     title: "Traditional Herbs",
@@ -89,7 +89,7 @@ export default function Home() {
             Honduras&apos; ethnobotanical heritage, delivered globally with Shopify and DHL Express
           </h1>
           <p>
-            Forestal Murillo Tejada ships authentic batana oil, melipona honey, and traditional herbs to the world. The site is
+            Forestal Murillo Tejada ships authentic batana oil, stingless bee honey, and traditional herbs to the world. The site is
             engineered for international buyers with localized pricing, DHL Express lanes, and 24/7 AI assistance.
           </p>
           <div className="hero__cta-group">
