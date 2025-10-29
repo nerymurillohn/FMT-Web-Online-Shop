@@ -100,7 +100,7 @@ export function ShippingEstimator() {
       <div className="shipping-estimator__header">
         <h3 id="shipping-estimator-heading">DHL Express Worldwide</h3>
         <p>
-          Shopify's native DHL Express integration will surface live rates at checkout. Use this matrix to communicate expectations up front.
+          Shopify&rsquo;s native DHL Express integration will surface live rates at checkout. Use this matrix to communicate expectations up front.
         </p>
       </div>
       <div role="group" aria-labelledby="country-selector-label">
