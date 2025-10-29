@@ -71,7 +71,7 @@ export default function ShopPage() {
                         src={product.image}
                         alt={product.alt}
                         fill
-                        style={{ objectFit: "contain" }}
+                        style={{ objectFit: "contain", objectPosition: "center" }}
                         sizes="(max-width: 768px) 80vw, (max-width: 1200px) 35vw, 20vw"
                       />
                     </div>

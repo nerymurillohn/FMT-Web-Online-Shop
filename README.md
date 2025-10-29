@@ -10,6 +10,8 @@ For the end-to-end architecture, environment strategy, and implementation roadma
 
 The repository is organized as a PNPM workspace. The primary storefront lives inside [`apps/web`](apps/web) and is built with Next.js 14.
 
+From the repository root (run `cd FMT-Web-Online-Shop` after cloning if needed):
+
 ```bash
 pnpm install
 pnpm dev     # starts the web app on http://localhost:3000
