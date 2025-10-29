@@ -39,6 +39,8 @@ body {
   line-height: 1.6;
   font-size: 1.05rem;
   color: #425466;
+main {
+  min-height: 100vh;
 }
 
 .sr-only {

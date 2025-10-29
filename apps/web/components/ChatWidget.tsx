@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useId, useMemo, useRef, useState } from "react";
+import { FormEvent, useMemo, useState } from "react";
 
 type Message = {
   id: string;
@@ -70,6 +71,7 @@ export function ChatWidget() {
           aria-label="AI support chat window"
           id={windowId}
         >
+        <section className="chat-widget__window" aria-label="AI support chat window">
           <header className="chat-widget__header">
             <div className="chat-widget__title">
               <span>AI Support</span>
@@ -85,6 +87,7 @@ export function ChatWidget() {
             </button>
           </header>
           <div className="chat-widget__body" role="log" aria-live="polite">
+          <div className="chat-widget__body">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -122,6 +125,7 @@ export function ChatWidget() {
         aria-expanded={isOpen}
         aria-controls={isOpen ? windowId : undefined}
       >
+      <button type="button" className="chat-widget__button" onClick={toggle} aria-label={ariaLabel}>
         {isOpen ? "Close chat" : "Need help?"}
       </button>
     </div>

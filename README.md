@@ -32,6 +32,7 @@ Restart the dev server after updating environment variables.
 - **Multi-currency previews:** update the exchange rates inside [`apps/web/components/CurrencySelector.tsx`](apps/web/components/CurrencySelector.tsx) whenever pricing changes. Shopify continues to charge in USD while the UI displays localized reference prices.
 - **DHL Express matrix:** [`apps/web/components/ShippingEstimator.tsx`](apps/web/components/ShippingEstimator.tsx) models the primary shipping lanes. Extend `DHL_EXPRESS_PROFILES` to add more destinations or adjust costs.
 - **AI support widget:** A floating chat assistant is available on every page. Connect it to knowledge sources once the product catalog and policies are finalized.
+The storefront currently ships with a floating AI support chat entry point available on every page. The assistant will be connected to Forestal MT knowledge sources in a follow-up iteration.
 
 ---
 
