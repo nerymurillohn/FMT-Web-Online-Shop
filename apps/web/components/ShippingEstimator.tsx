@@ -53,35 +53,42 @@ const DHL_EXPRESS_PROFILES: Record<CountryCode, ShippingProfile> = {
     region: "European Union",
     deliveryEstimate: "3-4 business days",
     costUSD: 48,
-    notes: "Set HS codes per SKU in Shopify to automate duties calculation."
+    notes: "VAT applies. EU customs rules apply."
   },
   AE: {
     country: "United Arab Emirates",
     region: "Middle East",
     deliveryEstimate: "4-5 business days",
-    costUSD: 55,
-    notes: "DHL requires consignee ID for customs clearance."
+    costUSD: 52,
+    notes: "Import fees are rare for personal use. Commercial shipments may have small duties."
   },
   AU: {
     country: "Australia",
-    region: "Oceania",
-    deliveryEstimate: "5-6 business days",
-    costUSD: 59,
-    notes: "GST applies for orders over AUD 1,000; DHL notifies the customer."
+    region: "Asia-Pacific",
+    deliveryEstimate: "4-5 business days",
+    costUSD: 50,
+    notes: "GST and import duties may apply over AUD 1,000."
   },
   HN: {
-    country: "Honduras",
+    country: "Honduras (Domestic)",
     region: "Central America",
     deliveryEstimate: "Next-day",
-    costUSD: 18,
-    notes: "Domestic fulfillment hub in Tegucigalpa for regional orders."
+    costUSD: 12,
+    notes: "Domestic coverage includes Tegucigalpa, San Pedro Sula, La Ceiba, and regional centers."
   }
 };
 
-const COUNTRY_OPTIONS: { code: CountryCode; label: string }[] = Object.entries(DHL_EXPRESS_PROFILES).map(([code, profile]) => ({
-  code: code as CountryCode,
-  label: `${profile.country} (${profile.region})`
-}));
+const COUNTRY_OPTIONS = [
+  { code: "US" as CountryCode, label: "🇺🇸 United States" },
+  { code: "CA" as CountryCode, label: "🇨🇦 Canada" },
+  { code: "MX" as CountryCode, label: "🇲🇽 Mexico" },
+  { code: "DE" as CountryCode, label: "🇩🇪 Germany" },
+  { code: "GB" as CountryCode, label: "🇬🇧 United Kingdom" },
+  { code: "FR" as CountryCode, label: "🇫🇷 France" },
+  { code: "AE" as CountryCode, label: "🇦🇪 UAE" },
+  { code: "AU" as CountryCode, label: "🇦🇺 Australia" },
+  { code: "HN" as CountryCode, label: "🇭🇳 Honduras (Local)" }
+];
 
 export function ShippingEstimator() {
   const [selectedCountry, setSelectedCountry] = useState<CountryCode>("US");
@@ -89,44 +96,46 @@ export function ShippingEstimator() {
   const profile = useMemo(() => DHL_EXPRESS_PROFILES[selectedCountry], [selectedCountry]);
 
   return (
-    <div className="shipping-estimator">
+    <div className="shipping-estimator" role="region" aria-labelledby="shipping-estimator-heading">
       <div className="shipping-estimator__header">
-        <h3>DHL Express Worldwide</h3>
+        <h3 id="shipping-estimator-heading">DHL Express Worldwide</h3>
         <p>
-          Shopify&apos;s native DHL Express integration will surface live rates at checkout. Use this matrix to communicate expectati
-          ons up front.
+          Shopify's native DHL Express integration will surface live rates at checkout. Use this matrix to communicate expectations up front.
         </p>
       </div>
-      <label className="shipping-estimator__label" htmlFor="country-selector">
-        Preview a shipping lane
-      </label>
-      <select
-        id="country-selector"
-        className="shipping-estimator__select"
-        value={selectedCountry}
-        onChange={(event) => setSelectedCountry(event.target.value as CountryCode)}
-      >
-        {COUNTRY_OPTIONS.map((option) => (
-          <option key={option.code} value={option.code}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-      <dl className="shipping-estimator__details">
-        <div>
+      <div role="group" aria-labelledby="country-selector-label">
+        <label className="shipping-estimator__label" id="country-selector-label" htmlFor="country-selector">
+          Preview a shipping lane
+        </label>
+        <select
+          id="country-selector"
+          className="shipping-estimator__select"
+          value={selectedCountry}
+          onChange={(event) => setSelectedCountry(event.target.value as CountryCode)}
+          aria-label="Select destination country to preview shipping information"
+        >
+          {COUNTRY_OPTIONS.map((option) => (
+            <option key={option.code} value={option.code}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
+      <dl className="shipping-estimator__details" role="group" aria-label="Shipping details">
+        <div role="group">
           <dt>Transit time</dt>
           <dd>{profile.deliveryEstimate}</dd>
         </div>
-        <div>
+        <div role="group">
           <dt>Estimated rate</dt>
           <dd>USD ${profile.costUSD.toFixed(2)}</dd>
         </div>
-        <div>
+        <div role="group">
           <dt>Notes</dt>
           <dd>{profile.notes}</dd>
         </div>
       </dl>
-      <p className="shipping-estimator__disclaimer">
+      <p className="shipping-estimator__disclaimer" role="note">
         Customers are responsible for customs duties, VAT, or GST in their jurisdiction. Shopify automatically sends pre-shipment
         invoices so buyers know exactly what to expect when DHL delivers.
       </p>
