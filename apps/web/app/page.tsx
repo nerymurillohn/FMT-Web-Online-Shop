@@ -1,9 +1,43 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { CurrencySelector } from "../components/CurrencySelector";
 import { ShippingEstimator } from "../components/ShippingEstimator";
 import { ShopifyReadiness } from "../components/ShopifyReadiness";
 
-const PRODUCT_LINES = [
+type ProductLine = {
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+};
+
+type GlobalHighlight = {
+  title: string;
+  description: string;
+  emphasis: string;
+};
+
+export const metadata: Metadata = {
+  title: "Forestal MT | Exporting Nature Without Borders",
+  description:
+    "Forestal Murillo Tejada combines Shopify commerce, DHL Express shipping, and localized pricing to deliver Honduran ethnobotanical products worldwide.",
+  keywords: [
+    "Forestal MT",
+    "Shopify",
+    "DHL Express",
+    "batana oil",
+    "melipona honey",
+    "Honduras exports"
+  ],
+  openGraph: {
+    title: "Forestal MT | Exporting Nature Without Borders",
+    description:
+      "Discover how Forestal Murillo Tejada ships Honduran ethnobotanical treasures globally with Shopify, localized pricing previews, and DHL Express fulfillment.",
+    type: "website"
+  }
+};
+
+const PRODUCT_LINES: ProductLine[] = [
   {
     title: "Batana Oil",
     description: "Ancestral Miskito elixir for hair, scalp, and beard care.",
@@ -24,7 +58,7 @@ const PRODUCT_LINES = [
   }
 ];
 
-const GLOBAL_HIGHLIGHTS = [
+const GLOBAL_HIGHLIGHTS: GlobalHighlight[] = [
   {
     title: "Shopify as the Commerce Engine",
     description:
@@ -67,17 +101,19 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="hero__products" aria-hidden="true">
+        <ul className="hero__products" aria-label="Highlighted product lines">
           {PRODUCT_LINES.map((item) => (
-            <article key={item.title} className="hero-card">
-              <div className="hero-card__image">
-                <Image src={item.image} alt={item.alt} fill sizes="(max-width: 768px) 45vw, 20vw" />
-              </div>
-              <h2>{item.title}</h2>
-              <p>{item.description}</p>
-            </article>
+            <li key={item.title}>
+              <article className="hero-card">
+                <div className="hero-card__image">
+                  <Image src={item.image} alt={item.alt} fill sizes="(max-width: 768px) 45vw, 20vw" />
+                </div>
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
+              </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       <section id="global-commerce" className="global-commerce">
