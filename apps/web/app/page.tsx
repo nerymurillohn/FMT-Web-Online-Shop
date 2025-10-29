@@ -82,33 +82,48 @@ const GLOBAL_HIGHLIGHTS: GlobalHighlight[] = [
 export default function Home() {
   return (
     <main className="homepage">
-      <section className="hero">
+      <section className="hero" aria-labelledby="hero-heading">
         <div className="hero__copy">
           <span className="hero__eyebrow">Exporting Nature Without Borders</span>
-          <h1>
-            Honduras&apos; ethnobotanical heritage, delivered globally with Shopify and DHL Express
+          <h1 id="hero-heading">
+            Honduras' ethnobotanical heritage, delivered globally with Shopify and DHL Express
           </h1>
           <p>
             Forestal Murillo Tejada ships authentic batana oil, melipona honey, and traditional herbs to the world. The site is
             engineered for international buyers with localized pricing, DHL Express lanes, and 24/7 AI assistance.
           </p>
           <div className="hero__cta-group">
-            <a className="hero__cta" href="#global-commerce">
+            <a 
+              className="hero__cta" 
+              href="#global-commerce"
+              aria-label="Navigate to global commerce blueprint section"
+            >
               Explore global commerce blueprint
             </a>
-            <a className="hero__cta hero__cta--ghost" href="#shopify-integration">
+            <a 
+              className="hero__cta hero__cta--ghost" 
+              href="#shopify-integration"
+              aria-label="Navigate to Shopify readiness section"
+            >
               Review Shopify readiness
             </a>
           </div>
         </div>
-        <ul className="hero__products" aria-label="Highlighted product lines">
+        <ul aria-label="Highlighted product lines" className="hero__products">
           {PRODUCT_LINES.map((item) => (
             <li key={item.title}>
               <article className="hero-card">
                 <div className="hero-card__image">
-                  <Image src={item.image} alt={item.alt} fill sizes="(max-width: 768px) 45vw, 20vw" />
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 768px) 45vw, 20vw"
+                    loading="lazy"
+                    aria-label={`Product image for ${item.title}: ${item.alt}`}
+                  />
                 </div>
-                <h2>{item.title}</h2>
+                <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </article>
             </li>
@@ -116,9 +131,9 @@ export default function Home() {
         </ul>
       </section>
 
-      <section id="global-commerce" className="global-commerce">
+      <section className="global-commerce" id="global-commerce" aria-labelledby="global-commerce-heading">
         <header className="section-header">
-          <h2>Global-first commerce foundation</h2>
+          <h2 id="global-commerce-heading">Global-first commerce foundation</h2>
           <p>
             Every touchpoint is built for cross-border trade from day one. Shopify powers the catalog, payments, and checkout while the
             marketing site runs on Next.js for storytelling and SEO.
@@ -126,8 +141,8 @@ export default function Home() {
         </header>
         <div className="global-commerce__grid">
           {GLOBAL_HIGHLIGHTS.map((highlight) => (
-            <article key={highlight.title} className="global-card">
-              <p className="global-card__eyebrow">{highlight.emphasis}</p>
+            <article className="global-card" key={highlight.title}>
+              <p className="global-card__eyebrow" aria-label={`Feature category: ${highlight.emphasis}`}>{highlight.emphasis}</p>
               <h3>{highlight.title}</h3>
               <p>{highlight.description}</p>
             </article>
@@ -135,10 +150,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="localization">
+      <section className="localization" aria-labelledby="localization-heading">
         <div className="localization__content">
           <div>
-            <h2>Currency strategy anchored in USD</h2>
+            <h2 id="localization-heading">Currency strategy anchored in USD</h2>
             <p>
               Price all SKUs in USD inside Shopify to simplify accounting and duty declarations. Use localized display prices on the
               storefront so global shoppers can understand value instantly.
@@ -148,10 +163,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="shipping">
+      <section className="shipping" aria-labelledby="shipping-heading">
         <div className="shipping__content">
           <div>
-            <h2>DHL Express fulfillment clarity</h2>
+            <h2 id="shipping-heading">DHL Express fulfillment clarity</h2>
             <p>
               DHL Express handles every international shipment with pickup from Honduras. Clear delivery times and cost expectations
               increase conversions and reduce support tickets.
@@ -161,18 +176,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="shopify-integration" className="shopify-section">
+      <section className="shopify-section" id="shopify-integration" aria-labelledby="shopify-readiness-heading">
         <ShopifyReadiness />
       </section>
 
-      <section className="transparency">
+      <section className="transparency" aria-labelledby="transparency-heading">
         <div className="transparency__content">
-          <h2>Transparent customs &amp; duties policy</h2>
+          <h2 id="transparency-heading">Transparent customs &amp; duties policy</h2>
           <p>
             Let customers know at checkout and in post-purchase emails that they are responsible for import duties, VAT, or GST in
-            their jurisdiction. Shopify&apos;s duties and tax settings, paired with DHL&apos;s customs paperwork, remove surprises.
+            their jurisdiction. Shopify's duties and tax settings, paired with DHL's customs paperwork, remove surprises.
           </p>
-          <ul>
+          <ul role="list">
             <li>Declare HS codes and product origins in Shopify for automated duty calculations.</li>
             <li>Display duties notice on product pages and in the customer support chatbot knowledge base.</li>
             <li>Provide DHL tracking links immediately after fulfillment so international buyers feel in control.</li>
