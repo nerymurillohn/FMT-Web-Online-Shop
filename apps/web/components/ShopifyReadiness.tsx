@@ -44,26 +44,30 @@ export function ShopifyReadiness() {
   };
 
   return (
-    <div className="shopify-readiness">
+    <div className="shopify-readiness" role="region" aria-labelledby="shopify-readiness-heading">
       <div className="shopify-readiness__header">
-        <h3>Shopify Integration Readiness</h3>
-        <div className="shopify-readiness__status-badge">
-          {isShopifyEnabled ? (
-            <span className="badge badge--success">✓ Ready ({completedCount}/3)</span>
-          ) : (
-            <span className="badge badge--warning">⚠ Configuration Required</span>
-          )}
-        </div>
+        <h3 id="shopify-readiness-heading">Shopify Integration Readiness</h3>
+        <p role="status" aria-live="polite" aria-atomic="true">
+          <span className={isBasicConfigured ? "badge badge--success" : "badge badge--pending"} role="status">
+            {isBasicConfigured ? "Ready" : "Setup Required"}
+          </span>
+          {completedCount} of {CHECKLIST_ITEMS.length} steps complete
+        </p>
         <p>
-          The site is wired to use Shopify as the commerce engine. Provide the credentials below to unlock live product data,
-          cart, and checkout functionality.
+          Connect to Shopify for product data, checkout redirect, and order management. Only Storefront API is required for basic
+          display; the Admin API enables advanced features.
         </p>
       </div>
-      
-      <ul className="shopify-readiness__list">
+
+      <ul className="shopify-readiness__checklist" role="list" aria-label="Shopify integration checklist">
         {CHECKLIST_ITEMS.map((item) => (
-          <li key={item.label} className={item.isComplete ? "is-complete" : "is-pending"}>
-            <span className="shopify-readiness__status" aria-hidden="true">
+          <li key={item.envVar} className={item.isComplete ? 'complete' : 'incomplete'}>
+            <span 
+              className="shopify-readiness__status" 
+              aria-hidden="true"
+              role="img"
+              aria-label={item.isComplete ? "Complete" : "Incomplete"}
+            >
               {item.isComplete ? "✓" : "•"}
             </span>
             <div>
@@ -79,34 +83,34 @@ export function ShopifyReadiness() {
         ))}
       </ul>
       
-      <div className="shopify-readiness__configuration">
-        <h4>Current Configuration</h4>
-        <div className="shopify-readiness__env-display">
-          <div className="env-var">
-            <span className="env-var__name">SHOPIFY_STORE_DOMAIN</span>
-            <span className="env-var__value">{getEnvVar('SHOPIFY_STORE_DOMAIN') || 'not-set'}</span>
+      <div className="shopify-readiness__configuration" role="group" aria-labelledby="current-config-heading">
+        <h4 id="current-config-heading">Current Configuration</h4>
+        <dl className="shopify-readiness__env-display" role="list">
+          <div className="env-var" role="group">
+            <dt className="env-var__name">SHOPIFY_STORE_DOMAIN</dt>
+            <dd className="env-var__value">{getEnvVar('SHOPIFY_STORE_DOMAIN') || 'not-set'}</dd>
           </div>
-          <div className="env-var">
-            <span className="env-var__name">SHOPIFY_STOREFRONT_ACCESS_TOKEN</span>
-            <span className="env-var__value">{maskToken(getEnvVar('SHOPIFY_STOREFRONT_ACCESS_TOKEN'))}</span>
+          <div className="env-var" role="group">
+            <dt className="env-var__name">SHOPIFY_STOREFRONT_ACCESS_TOKEN</dt>
+            <dd className="env-var__value">{maskToken(getEnvVar('SHOPIFY_STOREFRONT_ACCESS_TOKEN'))}</dd>
           </div>
-          <div className="env-var">
-            <span className="env-var__name">SHOPIFY_ADMIN_API_TOKEN</span>
-            <span className="env-var__value">{maskToken(getEnvVar('SHOPIFY_ADMIN_API_TOKEN'))}</span>
+          <div className="env-var" role="group">
+            <dt className="env-var__name">SHOPIFY_ADMIN_API_TOKEN</dt>
+            <dd className="env-var__value">{maskToken(getEnvVar('SHOPIFY_ADMIN_API_TOKEN'))}</dd>
           </div>
-        </div>
+        </dl>
       </div>
 
       <div className="shopify-readiness__footnote">
         {isBasicConfigured ? (
-          <div className="success-message">
+          <div className="success-message" role="status" aria-live="polite">
             <p>🎉 <strong>Shopify integration is ready!</strong></p>
             <p>You can now use Storefront API calls to fetch live product data and redirect to Shopify Checkout for purchases.</p>
           </div>
         ) : (
-          <div className="setup-message">
-            <p><strong>Setup Required:</strong></p>
-            <pre className="setup-instructions">
+          <div className="setup-message" role="status" aria-live="polite">
+            <h4 id="setup-required-heading">Setup Required:</h4>
+            <pre className="setup-instructions" aria-labelledby="setup-required-heading">
               {generateSetupInstructions(validation)}
             </pre>
           </div>
