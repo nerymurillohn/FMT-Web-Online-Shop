@@ -109,7 +109,7 @@ export default function Home() {
             </a>
             <a
               className="hero__cta hero__cta--ghost"
-              href="/catalog"
+              href="/shop"
               aria-label="Navigate to the full Forestal MT product catalog"
             >
               View 2025 product catalog

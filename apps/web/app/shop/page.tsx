@@ -9,13 +9,13 @@ import {
 } from "../../data/catalog";
 
 export const metadata: Metadata = {
-  title: "Catalog | Forestal MT 2025 SKU Lineup",
+  title: "Shop | Forestal MT 2025 Product Catalog",
   description:
-    "Browse the complete 2025 Forestal MT catalog featuring Batana Oil, Melipona honey, and traditional Honduran herbs.",
+    "Shop the complete 2025 Forestal MT lineup featuring Batana Oil, Melipona honey, and traditional Honduran herbs.",
   openGraph: {
-    title: "Forestal MT Catalog",
+    title: "Forestal MT Shop",
     description:
-      "Full 2025 SKU catalog for Batana Oil, Stingless Bee Honey, and Traditional Herbs from Forestal Murillo Tejada.",
+      "Browse the full 2025 product catalog for Batana Oil, Stingless Bee Honey, and Traditional Herbs from Forestal Murillo Tejada.",
     type: "website"
   }
 };
@@ -37,12 +37,12 @@ function groupProductsByCollection(products: CatalogProduct[]): Record<ProductCo
 
 const groupedProducts = groupProductsByCollection(CATALOG_PRODUCTS);
 
-export default function CatalogPage() {
+export default function ShopPage() {
   return (
-    <main className="catalog-page">
-      <header className="catalog-page__header">
-        <p className="catalog-page__eyebrow">Product catalog</p>
-        <h1>Forestal MT 2025 SKU lineup</h1>
+    <main className="shop-page">
+      <header className="shop-page__header">
+        <p className="shop-page__eyebrow">Product shop</p>
+        <h1>Forestal MT 2025 product catalog</h1>
         <p>
           Explore all 46 export-ready products across Batana Oil, Stingless Bee Honey, and Traditional Herbs. Every SKU is
           photographed for quick merchandising reference and Shopify setup.
@@ -54,19 +54,19 @@ export default function CatalogPage() {
         const products = groupedProducts[collection];
 
         return (
-          <section className="catalog-section" key={collection} aria-labelledby={`catalog-${collection}`}>
-            <div className="catalog-section__header">
-              <h2 id={`catalog-${collection}`}>{definition.title}</h2>
+          <section className="shop-section" key={collection} aria-labelledby={`shop-${collection}`}>
+            <div className="shop-section__header">
+              <h2 id={`shop-${collection}`}>{definition.title}</h2>
               <p>{definition.description}</p>
-              <p className="catalog-section__count" aria-label={`SKUs in ${definition.title}`}>
+              <p className="shop-section__count" aria-label={`SKUs in ${definition.title}`}>
                 {products.length} SKUs
               </p>
             </div>
-            <ul className="catalog-grid" aria-label={`${definition.title} product gallery`}>
+            <ul className="shop-grid" aria-label={`${definition.title} product gallery`}>
               {products.map((product) => (
-                <li key={product.sku} className="catalog-grid__item">
-                  <article className="catalog-card">
-                    <div className="catalog-card__image">
+                <li key={product.sku}>
+                  <article className="shop-card">
+                    <div className="shop-card__image">
                       <Image
                         src={product.image}
                         alt={product.alt}
@@ -74,9 +74,9 @@ export default function CatalogPage() {
                         sizes="(max-width: 768px) 80vw, (max-width: 1200px) 35vw, 20vw"
                       />
                     </div>
-                    <div className="catalog-card__meta">
-                      <span className="catalog-card__sku">{product.sku}</span>
-                      <span className="catalog-card__line">{definition.shortLabel}</span>
+                    <div className="shop-card__meta">
+                      <span className="shop-card__sku">{product.sku}</span>
+                      <span className="shop-card__line">{definition.shortLabel}</span>
                     </div>
                   </article>
                 </li>
