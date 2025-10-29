@@ -4,6 +4,7 @@ import { CurrencySelector } from "../components/CurrencySelector";
 import { ShippingEstimator } from "../components/ShippingEstimator";
 import { ShopifyReadiness } from "../components/ShopifyReadiness";
 
+const PRODUCT_LINES = [
 type ProductLine = {
   title: string;
   description: string;
@@ -58,6 +59,7 @@ const PRODUCT_LINES: ProductLine[] = [
   }
 ];
 
+const GLOBAL_HIGHLIGHTS = [
 const GLOBAL_HIGHLIGHTS: GlobalHighlight[] = [
   {
     title: "Shopify as the Commerce Engine",
@@ -100,6 +102,17 @@ export default function Home() {
               Review Shopify readiness
             </a>
           </div>
+        </div>
+        <div className="hero__products" aria-hidden="true">
+          {PRODUCT_LINES.map((item) => (
+            <article key={item.title} className="hero-card">
+              <div className="hero-card__image">
+                <Image src={item.image} alt={item.alt} fill sizes="(max-width: 768px) 45vw, 20vw" />
+              </div>
+              <h2>{item.title}</h2>
+              <p>{item.description}</p>
+            </article>
+          ))}
         </div>
         <ul className="hero__products" aria-label="Highlighted product lines">
           {PRODUCT_LINES.map((item) => (
