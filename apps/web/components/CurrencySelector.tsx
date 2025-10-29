@@ -57,7 +57,7 @@ export function CurrencySelector({ amountUSD }: { amountUSD: number }) {
       <div className="currency-selector__header">
         <h3 id="currency-selector-heading">Global Price Preview</h3>
         <p>
-          Display prices in your shopper's local currency while charging in USD. Conversion is refreshed manually as you
+          Display prices in your shopper&rsquo;s local currency while charging in USD. Conversion is refreshed manually as you
           update exchange rates.
         </p>
       </div>

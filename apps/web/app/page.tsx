@@ -41,20 +41,20 @@ const PRODUCT_LINES: ProductLine[] = [
   {
     title: "Batana Oil",
     description: "Ancestral Miskito elixir for hair, scalp, and beard care.",
-    image: "/images/batana-placeholder.svg",
-    alt: "Stylized gradient background representing batana oil"
+    image: "/images/catalog/FMT-BO-BO-2025.png",
+    alt: "Product photography of Forestal MT SKU FMT-BO-BO-2025 batana oil"
   },
   {
     title: "Stingless Bee Honey",
     description: "Raw stingless bee honey treasured by the Mayans for holistic wellness.",
-    image: "/images/melipona-placeholder.svg",
-    alt: "Amber gradient background symbolizing stingless bee honey"
+    image: "/images/catalog/FMT-SBH-JM-2025.png",
+    alt: "Product photography of Forestal MT SKU FMT-SBH-JM-2025 stingless bee honey"
   },
   {
     title: "Traditional Herbs",
     description: "Wildcrafted botanicals preserving Honduran ancestral wisdom.",
-    image: "/images/herbs-placeholder.svg",
-    alt: "Green gradient background suggesting Honduran traditional herbs"
+    image: "/images/catalog/FMT-TH-AL-2025.png",
+    alt: "Product photography of Forestal MT SKU FMT-TH-AL-2025 traditional herbs"
   }
 ];
 
@@ -86,26 +86,33 @@ export default function Home() {
         <div className="hero__copy">
           <span className="hero__eyebrow">Exporting Nature Without Borders</span>
           <h1 id="hero-heading">
-            Honduras' ethnobotanical heritage, delivered globally with Shopify and DHL Express
+            Honduras&rsquo; ethnobotanical heritage, delivered globally with Shopify and DHL Express
           </h1>
           <p>
             Forestal Murillo Tejada ships authentic batana oil, stingless bee honey, and traditional herbs to the world. The site is
             engineered for international buyers with localized pricing, DHL Express lanes, and 24/7 AI assistance.
           </p>
           <div className="hero__cta-group">
-            <a 
-              className="hero__cta" 
+            <a
+              className="hero__cta"
               href="#global-commerce"
               aria-label="Navigate to global commerce blueprint section"
             >
               Explore global commerce blueprint
             </a>
-            <a 
-              className="hero__cta hero__cta--ghost" 
+            <a
+              className="hero__cta hero__cta--ghost"
               href="#shopify-integration"
               aria-label="Navigate to Shopify readiness section"
             >
               Review Shopify readiness
+            </a>
+            <a
+              className="hero__cta hero__cta--ghost"
+              href="/catalog"
+              aria-label="Navigate to the full Forestal MT product catalog"
+            >
+              View 2025 product catalog
             </a>
           </div>
         </div>
@@ -185,7 +192,7 @@ export default function Home() {
           <h2 id="transparency-heading">Transparent customs &amp; duties policy</h2>
           <p>
             Let customers know at checkout and in post-purchase emails that they are responsible for import duties, VAT, or GST in
-            their jurisdiction. Shopify's duties and tax settings, paired with DHL's customs paperwork, remove surprises.
+            their jurisdiction. Shopify&rsquo;s duties and tax settings, paired with DHL&rsquo;s customs paperwork, remove surprises.
           </p>
           <ul role="list">
             <li>Declare HS codes and product origins in Shopify for automated duty calculations.</li>
