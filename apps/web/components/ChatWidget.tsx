@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useId, useMemo, useRef, useState } from "react";
 
 type Message = {
   id: string;
@@ -21,6 +21,9 @@ export function ChatWidget() {
         "Hello! I'm here 24/7 to help with product questions, shipping, and returns. Ask me anything or let me know how I can guide your purchase."
     }
   ]);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const windowId = useId();
 
   const toggle = () => setIsOpen((prev) => !prev);
 
@@ -48,6 +51,12 @@ export function ChatWidget() {
     setInput("");
   };
 
+  useEffect(() => {
+    if (isOpen) {
+      inputRef.current?.focus();
+    }
+  }, [isOpen]);
+
   const ariaLabel = useMemo(
     () => (isOpen ? "Close customer support chat" : "Open customer support chat"),
     [isOpen]
@@ -56,7 +65,11 @@ export function ChatWidget() {
   return (
     <div className="chat-widget__container">
       {isOpen && (
-        <section className="chat-widget__window" aria-label="AI support chat window">
+        <section
+          className="chat-widget__window"
+          aria-label="AI support chat window"
+          id={windowId}
+        >
           <header className="chat-widget__header">
             <div className="chat-widget__title">
               <span>AI Support</span>
@@ -71,7 +84,7 @@ export function ChatWidget() {
               ×
             </button>
           </header>
-          <div className="chat-widget__body">
+          <div className="chat-widget__body" role="log" aria-live="polite">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -93,6 +106,7 @@ export function ChatWidget() {
               value={input}
               onChange={(event) => setInput(event.target.value)}
               autoComplete="off"
+              ref={inputRef}
             />
             <button type="submit" className="chat-widget__send" disabled={!input.trim()}>
               Send
@@ -100,7 +114,14 @@ export function ChatWidget() {
           </form>
         </section>
       )}
-      <button type="button" className="chat-widget__button" onClick={toggle} aria-label={ariaLabel}>
+      <button
+        type="button"
+        className="chat-widget__button"
+        onClick={toggle}
+        aria-label={ariaLabel}
+        aria-expanded={isOpen}
+        aria-controls={isOpen ? windowId : undefined}
+      >
         {isOpen ? "Close chat" : "Need help?"}
       </button>
     </div>
