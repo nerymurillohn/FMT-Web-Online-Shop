@@ -15,6 +15,23 @@ pnpm install
 pnpm dev     # starts the web app on http://localhost:3000
 ```
 
+### Shopify commerce configuration
+
+Shopify is the single source of truth for catalog, pricing, inventory, and checkout. Provide credentials in `apps/web/.env.local` to unlock live Storefront API calls:
+
+```
+SHOPIFY_STORE_DOMAIN=your-store.myshopify.com
+SHOPIFY_STOREFRONT_ACCESS_TOKEN=token-from-sales-channel
+SHOPIFY_ADMIN_API_TOKEN=private-app-admin-token
+```
+
+Restart the dev server after updating environment variables.
+
+### International customer experience tooling
+
+- **Multi-currency previews:** update the exchange rates inside [`apps/web/components/CurrencySelector.tsx`](apps/web/components/CurrencySelector.tsx) whenever pricing changes. Shopify continues to charge in USD while the UI displays localized reference prices.
+- **DHL Express matrix:** [`apps/web/components/ShippingEstimator.tsx`](apps/web/components/ShippingEstimator.tsx) models the primary shipping lanes. Extend `DHL_EXPRESS_PROFILES` to add more destinations or adjust costs.
+- **AI support widget:** A floating chat assistant is available on every page. Connect it to knowledge sources once the product catalog and policies are finalized.
 The storefront currently ships with a floating AI support chat entry point available on every page. The assistant will be connected to Forestal MT knowledge sources in a follow-up iteration.
 
 ---

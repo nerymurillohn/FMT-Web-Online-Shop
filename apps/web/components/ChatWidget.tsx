@@ -1,5 +1,6 @@
 "use client";
 
+import { FormEvent, useEffect, useId, useMemo, useRef, useState } from "react";
 import { FormEvent, useMemo, useState } from "react";
 
 type Message = {
@@ -21,6 +22,9 @@ export function ChatWidget() {
         "Hello! I'm here 24/7 to help with product questions, shipping, and returns. Ask me anything or let me know how I can guide your purchase."
     }
   ]);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const windowId = useId();
 
   const toggle = () => setIsOpen((prev) => !prev);
 
@@ -48,6 +52,12 @@ export function ChatWidget() {
     setInput("");
   };
 
+  useEffect(() => {
+    if (isOpen) {
+      inputRef.current?.focus();
+    }
+  }, [isOpen]);
+
   const ariaLabel = useMemo(
     () => (isOpen ? "Close customer support chat" : "Open customer support chat"),
     [isOpen]
@@ -56,6 +66,11 @@ export function ChatWidget() {
   return (
     <div className="chat-widget__container">
       {isOpen && (
+        <section
+          className="chat-widget__window"
+          aria-label="AI support chat window"
+          id={windowId}
+        >
         <section className="chat-widget__window" aria-label="AI support chat window">
           <header className="chat-widget__header">
             <div className="chat-widget__title">
@@ -71,6 +86,7 @@ export function ChatWidget() {
               ×
             </button>
           </header>
+          <div className="chat-widget__body" role="log" aria-live="polite">
           <div className="chat-widget__body">
             {messages.map((message) => (
               <div
@@ -93,6 +109,7 @@ export function ChatWidget() {
               value={input}
               onChange={(event) => setInput(event.target.value)}
               autoComplete="off"
+              ref={inputRef}
             />
             <button type="submit" className="chat-widget__send" disabled={!input.trim()}>
               Send
@@ -100,6 +117,14 @@ export function ChatWidget() {
           </form>
         </section>
       )}
+      <button
+        type="button"
+        className="chat-widget__button"
+        onClick={toggle}
+        aria-label={ariaLabel}
+        aria-expanded={isOpen}
+        aria-controls={isOpen ? windowId : undefined}
+      >
       <button type="button" className="chat-widget__button" onClick={toggle} aria-label={ariaLabel}>
         {isOpen ? "Close chat" : "Need help?"}
       </button>
