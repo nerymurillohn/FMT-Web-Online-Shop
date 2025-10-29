@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import {
   CATALOG_PRODUCTS,
   PRODUCT_COLLECTIONS,
@@ -37,6 +38,11 @@ function groupProductsByCollection(products: CatalogProduct[]): Record<ProductCo
 
 const groupedProducts = groupProductsByCollection(CATALOG_PRODUCTS);
 
+const catalogImageStyle: CSSProperties = {
+  objectFit: "contain",
+  objectPosition: "center"
+};
+
 export default function ShopPage() {
   return (
     <main className="shop-page">
@@ -71,7 +77,7 @@ export default function ShopPage() {
                         src={product.image}
                         alt={product.alt}
                         fill
-                        style={{ objectFit: "contain" }}
+                        style={catalogImageStyle}
                         sizes="(max-width: 768px) 80vw, (max-width: 1200px) 35vw, 20vw"
                       />
                     </div>
