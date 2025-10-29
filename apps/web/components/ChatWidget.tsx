@@ -23,7 +23,7 @@ export function ChatWidget() {
       id: "welcome",
       author: "bot",
       content:
-        "Hello! I'm here 24/7 to help with product questions, shipping, and returns. Ask me anything about our Batana Oil, Melipona Honey, or Traditional Herbs.",
+        "Hello! I'm here 24/7 to help with product questions, shipping, and returns. Ask me anything about our Batana Oil, Stingless Bee Honey, or Traditional Herbs.",
       timestamp: new Date()
     }
   ]);
