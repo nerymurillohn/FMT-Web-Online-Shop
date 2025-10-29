@@ -101,17 +101,6 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="hero__products" aria-hidden="true">
-          {PRODUCT_LINES.map((item) => (
-            <article key={item.title} className="hero-card">
-              <div className="hero-card__image">
-                <Image src={item.image} alt={item.alt} fill sizes="(max-width: 768px) 45vw, 20vw" />
-              </div>
-              <h2>{item.title}</h2>
-              <p>{item.description}</p>
-            </article>
-          ))}
-        </div>
         <ul className="hero__products" aria-label="Highlighted product lines">
           {PRODUCT_LINES.map((item) => (
             <li key={item.title}>
@@ -178,7 +167,7 @@ export default function Home() {
 
       <section className="transparency">
         <div className="transparency__content">
-          <h2>Transparent customs & duties policy</h2>
+          <h2>Transparent customs &amp; duties policy</h2>
           <p>
             Let customers know at checkout and in post-purchase emails that they are responsible for import duties, VAT, or GST in
             their jurisdiction. Shopify&apos;s duties and tax settings, paired with DHL&apos;s customs paperwork, remove surprises.
@@ -190,3 +179,6 @@ export default function Home() {
           </ul>
         </div>
       </section>
+    </main>
+  );
+}

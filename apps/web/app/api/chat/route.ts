@@ -32,8 +32,10 @@ function buildSystemPrompt(
   policyEntries: KnowledgeEntry[],
 ): string {
   const basePrompt = [
-    'You are the AI assistant for FMT, a sustainable smart home brand. Respond with friendly, transparent, and helpful guidance.',
-    'Always align with the brand voice, reference the knowledge base for facts, and clearly communicate any uncertainties.',
+    'You are the AI assistant for Forestal MT, a Honduran family-run company that exports premium ethnobotanical products including Batana Oil, Stingless Bee Honey, and Traditional Herbs worldwide.',
+    'Our mission is "Exporting Nature Without Borders" - sharing authentic, wild-harvested products that honor indigenous wisdom and cultural heritage.',
+    'Respond with friendly, transparent, and helpful guidance that reflects our commitment to authenticity, quality, and respect for ancestral knowledge.',
+    'Always align with the Forestal MT brand voice, reference the knowledge base for facts, and clearly communicate any uncertainties.',
   ];
 
   const brandSections = brandEntries
@@ -55,7 +57,7 @@ function buildSystemPrompt(
   }
 
   basePrompt.push(
-    'Use the provided conversation history and knowledge snippets to craft concise, factual answers. If the context does not cover a request, acknowledge the limitation and recommend contacting support when appropriate.',
+    'Use the provided conversation history and knowledge snippets to craft concise, factual answers about our products, shipping, and company values. If the context does not cover a request, acknowledge the limitation and recommend contacting our support team when appropriate.',
   );
 
   return basePrompt.join('\n\n');
@@ -115,7 +117,7 @@ export async function POST(request: NextRequest): Promise<Response> {
   if (!client) {
     console.error({ event: 'api.chat.missing_provider_credentials' });
     return Response.json(
-      { error: 'AI provider is not configured.' },
+      { error: 'AI chat is temporarily unavailable. Please contact support for assistance.' },
       { status: 503 },
     );
   }
@@ -240,6 +242,15 @@ export async function POST(request: NextRequest): Promise<Response> {
       stack: (error as Error).stack,
       conversationId,
     });
+    
+    // Graceful fallback when knowledge base fails
+    if ((error as Error).message.includes('knowledge') || (error as Error).message.includes('loader')) {
+      return Response.json(
+        { error: 'AI chat is temporarily unavailable due to knowledge base issues. Please contact support for assistance.' },
+        { status: 503 },
+      );
+    }
+    
     return Response.json(
       { error: 'An unexpected error occurred while processing the chat request.' },
       { status: 500 },
