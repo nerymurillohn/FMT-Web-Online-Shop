@@ -6,6 +6,17 @@ Forestal MT website+ecommerce development for launch-ready.
 
 For the end-to-end architecture, environment strategy, and implementation roadmap, review [`docs/project-blueprint.md`](docs/project-blueprint.md).
 
+## Getting Started
+
+The repository is organized as a PNPM workspace. The primary storefront lives inside [`apps/web`](apps/web) and is built with Next.js 14.
+
+```bash
+pnpm install
+pnpm dev     # starts the web app on http://localhost:3000
+```
+
+The storefront currently ships with a floating AI support chat entry point available on every page. The assistant will be connected to Forestal MT knowledge sources in a follow-up iteration.
+
 ---
 
 ## Who We Are

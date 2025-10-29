@@ -1,0 +1,12 @@
+<svg width="600" height="450" viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#184d36" />
+      <stop offset="100%" stop-color="#3a7a55" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#g)" rx="48" />
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#fdf8ee" font-family="'Segoe UI', sans-serif" font-size="46" letter-spacing="4">
+    BATANA OIL
+  </text>
+</svg>
