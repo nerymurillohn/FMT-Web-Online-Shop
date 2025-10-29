@@ -39,6 +39,8 @@ body {
   line-height: 1.6;
   font-size: 1.05rem;
   color: #425466;
+main {
+  min-height: 100vh;
 }
 
 .sr-only {
@@ -303,6 +305,14 @@ body {
 .hero__products {
   display: grid;
   gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hero__products > li {
+  list-style: none;
+  margin: 0;
 }
 
 .hero-card {
