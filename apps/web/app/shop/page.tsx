@@ -1,14 +1,6 @@
 'use client';
 
-import { promises as fs } from 'fs';
-import path from 'path';
 import { useEffect, useState } from 'react';
-
-async function getProducts() {
-  const filePath = path.join(process.cwd(), 'data', 'products.json');
-  const fileContent = await fs.readFile(filePath, 'utf-8');
-  return JSON.parse(fileContent);
-}
 
 export default function ShopPage() {
   const [products, setProducts] = useState<any[]>([]);
@@ -18,7 +10,8 @@ export default function ShopPage() {
 
   useEffect(() => {
     async function fetchProducts() {
-      const products = await getProducts();
+      const response = await fetch('/api/products');
+      const products = await response.json();
       setProducts(products);
       setFilteredProducts(products);
       const categories = ['all', ...Array.from(new Set(products.map((p: any) => p.category)))];

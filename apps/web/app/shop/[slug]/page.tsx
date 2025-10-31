@@ -1,18 +1,10 @@
 'use client';
 
-import { promises as fs } from 'fs';
-import path from 'path';
 import { BulkPricingModal } from '@/components/BulkPricingModal';
 import { ProductJsonLd } from 'next-seo';
 import { useCartStore } from '@/lib/store';
 import { useEffect, useState } from 'react';
 import { ImageGallery } from '@/components/ImageGallery';
-
-async function getProducts() {
-  const filePath = path.join(process.cwd(), 'data', 'products.json');
-  const fileContent = await fs.readFile(filePath, 'utf-8');
-  return JSON.parse(fileContent);
-}
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
   const [product, setProduct] = useState<any>(null);
@@ -21,7 +13,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
   useEffect(() => {
     async function fetchProduct() {
-      const products = await getProducts();
+      const response = await fetch('/api/products');
+      const products = await response.json();
       const product = products.find((p: any) => p.sku === params.slug);
       setProduct(product);
     }

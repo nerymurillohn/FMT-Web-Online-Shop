@@ -2,16 +2,23 @@
 
 import { useCartStore } from '@/lib/store';
 import { loadStripe } from '@stripe/stripe-js';
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+import { useEffect, useState } from 'react';
 
 export function Cart() {
+  const [stripe, setStripe] = useState<any>(null);
   const cart = useCartStore((state) => state.cart);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const clearCart = useCartStore((state) => state.clearCart);
 
+  useEffect(() => {
+    async function getStripe() {
+      const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+      setStripe(stripe);
+    }
+    getStripe();
+  }, []);
+
   const handleCheckout = async () => {
-    const stripe = await stripePromise;
     const response = await fetch('/api/checkout', {
       method: 'POST',
       headers: {
@@ -22,7 +29,7 @@ export function Cart() {
 
     const { sessionId } = await response.json();
     if (stripe) {
-      stripe.redirectToCheckout({ sessionId });
+      await stripe.redirectToCheckout({ sessionId });
     }
   };
 
@@ -52,6 +59,7 @@ export function Cart() {
           <button
             className="bg-primary text-primary-foreground px-4 py-2 rounded mt-4"
             onClick={handleCheckout}
+            disabled={!stripe}
           >
             Checkout
           </button>
