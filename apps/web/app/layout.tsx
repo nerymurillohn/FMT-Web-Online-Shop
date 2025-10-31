@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
-import { ChatWidget } from "../components/ChatWidget";
 import { logEnvironmentStatus } from "../lib/env";
+import { fraunces, libreBaskerville, cormorantGaramond } from './fonts'
+import { FloatingIcons } from "@/components/FloatingIcons";
+import { CTA } from "@/components/CTA";
+import { JsonLd } from "@/components/JsonLd";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 // Log environment status in development
 if (process.env.NODE_ENV === 'development') {
@@ -24,10 +29,14 @@ export default function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${fraunces.variable} ${libreBaskerville.variable} ${cormorantGaramond.variable}`}>
       <body>
-        {children}
-        <ChatWidget />
+        <JsonLd />
+        <Header />
+        <main>{children}</main>
+        <CTA />
+        <Footer />
+        <FloatingIcons />
       </body>
     </html>
   );

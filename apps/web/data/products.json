@@ -1,0 +1,23 @@
+[
+  {
+    "sku": "BO-001",
+    "name": "Batana Oil",
+    "category": "Oils",
+    "description": "Pure, raw, and unrefined Batana Oil from La Mosquitia, Honduras.",
+    "sourcing": "Directly from the Tawira people."
+  },
+  {
+    "sku": "SBH-001",
+    "name": "Stingless Bee Honey",
+    "category": "Honey",
+    "description": "Rare and medicinal honey from native stingless bees.",
+    "sourcing": "Sustainably harvested from the rainforest."
+  },
+  {
+    "sku": "TH-001",
+    "name": "Traditional Herbs",
+    "category": "Herbs",
+    "description": "A selection of traditional Honduran medicinal herbs.",
+    "sourcing": "Wildcrafted by indigenous communities."
+  }
+]
