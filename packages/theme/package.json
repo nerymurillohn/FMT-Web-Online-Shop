@@ -1,0 +1,16 @@
+{
+  "name": "@fmt/theme",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "tailwind-preset.ts"
+  ],
+  "scripts": {
+    "build": "style-dictionary build --config ./style-dictionary.config.mjs"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.1.1"
+  }
+}
