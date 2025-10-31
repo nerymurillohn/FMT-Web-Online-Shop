@@ -74,7 +74,7 @@ keywords:
 ## Contribution workflow
 
 1. Create or update Markdown files following the schema above.
-2. Run `pnpm lint` at the repo root to ensure lint checks pass.
+2. Run `npm run lint` at the repo root to ensure lint checks pass.
 3. If adding new locales, confirm terminology with the localization team.
 4. Submit a pull request with a summary of what changed and why.
 

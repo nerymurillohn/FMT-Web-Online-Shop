@@ -2,20 +2,24 @@
   "name": "fmt-web-online-shop",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@8.15.4",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "packageManager": "npm@10.8.1",
   "engines": {
     "node": ">=18.17.0"
   },
   "scripts": {
-    "dev": "pnpm --filter web dev",
-    "build": "pnpm --filter web build",
-    "start": "pnpm --filter web start",
-    "lint": "pnpm --filter web lint",
-    "test": "pnpm --filter web test",
-    "storybook": "pnpm --filter web storybook",
-    "storybook:build": "pnpm --filter web storybook:build",
-    "storybook:test": "pnpm --filter web storybook:test",
-    "build:tokens": "pnpm --filter @fmt/theme build",
+    "dev": "npm run --workspace web dev",
+    "build": "npm run --workspace web build",
+    "start": "npm run --workspace web start",
+    "lint": "npm run --workspace web lint",
+    "test": "npm run --workspace web test",
+    "storybook": "npm run --workspace web storybook",
+    "storybook:build": "npm run --workspace web storybook:build",
+    "storybook:test": "npm run --workspace web storybook:test",
+    "build:tokens": "npm run --workspace @fmt/theme build",
     "gen:catalog": "ts-node --project tsconfig.scripts.json scripts/gen-catalog.ts"
   },
   "devDependencies": {
