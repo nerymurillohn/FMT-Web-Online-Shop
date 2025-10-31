@@ -1,0 +1,87 @@
+{
+  "color": {
+    "background": { "value": { "light": "0 0% 100%", "dark": "222.2 84% 4.9%" } },
+    "foreground": { "value": { "light": "222.2 84% 4.9%", "dark": "210 40% 98%" } },
+    "card": { "value": { "light": "0 0% 100%", "dark": "222.2 84% 4.9%" } },
+    "card-foreground": { "value": { "light": "222.2 84% 4.9%", "dark": "210 40% 98%" } },
+    "popover": { "value": { "light": "0 0% 100%", "dark": "222.2 84% 4.9%" } },
+    "popover-foreground": { "value": { "light": "222.2 84% 4.9%", "dark": "210 40% 98%" } },
+    "primary": { "value": { "light": "222.2 47.4% 11.2%", "dark": "210 40% 98%" } },
+    "primary-foreground": { "value": { "light": "210 40% 98%", "dark": "222.2 47.4% 11.2%" } },
+    "secondary": { "value": { "light": "210 40% 96.1%", "dark": "217.2 32.6% 17.5%" } },
+    "secondary-foreground": { "value": { "light": "222.2 47.4% 11.2%", "dark": "210 40% 98%" } },
+    "muted": { "value": { "light": "210 40% 96.1%", "dark": "217.2 32.6% 17.5%" } },
+    "muted-foreground": { "value": { "light": "215.4 16.3% 46.9%", "dark": "215 20.2% 65.1%" } },
+    "accent": { "value": { "light": "210 40% 96.1%", "dark": "217.2 32.6% 17.5%" } },
+    "accent-foreground": { "value": { "light": "222.2 47.4% 11.2%", "dark": "210 40% 98%" } },
+    "destructive": { "value": { "light": "0 84.2% 60.2%", "dark": "0 68% 46%" } },
+    "destructive-foreground": { "value": { "light": "210 40% 98%", "dark": "210 40% 96%" } },
+    "border": { "value": { "light": "214.3 31.8% 91.4%", "dark": "217.2 32.6% 17.5%" } },
+    "input": { "value": { "light": "214.3 31.8% 91.4%", "dark": "217.2 32.6% 17.5%" } },
+    "ring": { "value": { "light": "222.2 84% 4.9%", "dark": "212.7 26.8% 83.9%" } },
+    "focus-ring": { "value": { "light": "220 90% 56%", "dark": "216 93% 68%" } },
+    "state-hover": { "value": { "light": "210 40% 92%", "dark": "217 32% 24%" } },
+    "state-active": { "value": { "light": "210 40% 88%", "dark": "217 32% 28%" } },
+    "state-disabled": { "value": { "light": "214 16% 85%", "dark": "220 15% 28%" } },
+    "state-high-contrast": { "value": { "light": "222 89% 2%", "dark": "210 40% 98%" } }
+  },
+  "radius": { "value": "0.75rem" },
+  "space": {
+    "3xs": { "value": "0.25rem" },
+    "2xs": { "value": "0.5rem" },
+    "xs": { "value": "0.75rem" },
+    "sm": { "value": "1rem" },
+    "md": { "value": "1.5rem" },
+    "lg": { "value": "2rem" },
+    "xl": { "value": "3rem" },
+    "2xl": { "value": "4rem" },
+    "3xl": { "value": "6rem" },
+    "gutter": { "value": "clamp(1.5rem, 3vw, 3rem)" }
+  },
+  "font-size": {
+    "xs": { "value": "0.75rem" },
+    "sm": { "value": "0.875rem" },
+    "base": { "value": "1rem" },
+    "lg": { "value": "1.25rem" },
+    "xl": { "value": "1.5rem" },
+    "2xl": { "value": "1.875rem" },
+    "3xl": { "value": "2.25rem" }
+  },
+  "line-height": {
+    "tight": { "value": "1.2" },
+    "snug": { "value": "1.35" },
+    "normal": { "value": "1.5" },
+    "relaxed": { "value": "1.65" }
+  },
+  "tracking": {
+    "tight": { "value": "-0.01em" },
+    "normal": { "value": "0" },
+    "wide": { "value": "0.08em" }
+  },
+  "shadow": {
+    "xs": { "value": "0 1px 2px 0 hsl(222.2 84% 4.9% / 0.04)" },
+    "sm": { "value": "0 1px 3px 0 hsl(222.2 84% 4.9% / 0.1), 0 1px 2px -1px hsl(222.2 84% 4.9% / 0.1)" },
+    "md": { "value": "0 10px 15px -3px hsl(222.2 84% 4.9% / 0.1), 0 4px 6px -4px hsl(222.2 84% 4.9% / 0.1)" },
+    "lg": { "value": "0 20px 25px -5px hsl(222.2 84% 4.9% / 0.1), 0 10px 10px -5px hsl(222.2 84% 4.9% / 0.04)" }
+  },
+  "z": {
+    "base": { "value": "1" },
+    "dropdown": { "value": "10" },
+    "sticky": { "value": "100" },
+    "overlay": { "value": "400" },
+    "modal": { "value": "500" },
+    "popover": { "value": "600" },
+    "tooltip": { "value": "700" }
+  },
+  "motion-duration": {
+    "sm": { "value": "120ms" },
+    "md": { "value": "200ms" },
+    "lg": { "value": "320ms" }
+  },
+  "motion-easing": {
+    "standard": { "value": "cubic-bezier(0.4, 0, 0.2, 1)" },
+    "emphasized": { "value": "cubic-bezier(0.2, 0, 0, 1)" },
+    "decelerate": { "value": "cubic-bezier(0, 0, 0.2, 1)" },
+    "accelerate": { "value": "cubic-bezier(0.4, 0, 1, 1)" }
+  }
+}

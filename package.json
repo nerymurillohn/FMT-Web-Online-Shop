@@ -12,6 +12,10 @@
     "start": "pnpm --filter web start",
     "lint": "pnpm --filter web lint",
     "test": "pnpm --filter web test",
+    "storybook": "pnpm --filter web storybook",
+    "storybook:build": "pnpm --filter web storybook:build",
+    "storybook:test": "pnpm --filter web storybook:test",
+    "build:tokens": "pnpm --filter @fmt/theme build",
     "gen:catalog": "ts-node --project tsconfig.scripts.json scripts/gen-catalog.ts"
   },
   "devDependencies": {
