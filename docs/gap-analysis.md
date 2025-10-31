@@ -47,7 +47,7 @@ Open questions for stakeholders (Section 10) and preparatory actions (Section 11
 **Action Needed:** Create an issue tracker or project board to manage stakeholder responses and operational next steps.
 
 ## Recommendations
-1. **Initialize the Monorepo:** Set up the directory structure, package manager configuration (`pnpm`), and baseline TypeScript/Next.js projects.
+1. **Initialize the Monorepo:** Set up the directory structure, package manager configuration (`npm`), and baseline TypeScript/Next.js projects.
 2. **Establish CI/CD Early:** Implement GitHub Actions with linting, testing, and build steps to prevent regressions as code is introduced.
 3. **Prioritize Data Intake:** Secure the datasets and credentials enumerated in the blueprint to unlock development of commerce, CMS, and integrations.
 4. **Document Ownership:** Assign leads for each architectural area (frontend, backend, infra, CMS) to drive gap closure.

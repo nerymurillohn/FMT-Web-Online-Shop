@@ -8,11 +8,11 @@ For the end-to-end architecture, environment strategy, and implementation roadma
 
 ## Getting Started
 
-The repository is organized as a PNPM workspace. The primary storefront lives inside [`apps/web`](apps/web) and is built with Next.js 14.
+The repository is organized as an npm workspace. The primary storefront lives inside [`apps/web`](apps/web) and is built with Next.js 14.
 
 ```bash
-pnpm install
-pnpm dev     # starts the web app on http://localhost:3000
+npm install
+npm run dev     # starts the web app on http://localhost:3000
 ```
 
 ### Shopify commerce configuration
