@@ -1,25 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-10-29.clover',
+if (!process.env.STRIPE_SECRET_KEY) {
+  throw new Error('STRIPE_SECRET_KEY is not set');
+}
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: '2023-10-16',
+});
+
+import { catalog, cartItemSchema } from '@/lib/catalog';
+import { z } from 'zod';
+
+const checkoutRequestSchema = z.object({
+  cart: z.array(cartItemSchema),
 });
 
 export async function POST(req: NextRequest) {
-  const { cart } = await req.json();
-
-  const lineItems = cart.map((item: any) => ({
-    price_data: {
-      currency: 'usd',
-      product_data: {
-        name: item.name,
-      },
-      unit_amount: item.price * 100,
-    },
-    quantity: item.quantity,
-  }));
-
   try {
+    const json = await req.json();
+    const { cart } = checkoutRequestSchema.parse(json);
+
+    const lineItems = cart.map((item) => {
+      const product = catalog[item.sku];
+      if (!product) {
+        throw new Error(`Unknown product SKU: ${item.sku}`);
+      }
+      return {
+        price: product.priceId,
+        quantity: item.quantity,
+      };
+    });
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: lineItems,
@@ -31,6 +43,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ sessionId: session.id });
   } catch (err) {
     console.error(err);
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: 'Invalid cart data' }, { status: 400 });
+    }
     return NextResponse.json({ error: 'Error creating checkout session' }, { status: 500 });
   }
 }
