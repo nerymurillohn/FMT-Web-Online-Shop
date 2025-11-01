@@ -123,6 +123,6 @@ const tailwindPreset = {
       },
     },
   },
-} satisfies Config
+} satisfies Partial<Config>
 
 export default tailwindPreset

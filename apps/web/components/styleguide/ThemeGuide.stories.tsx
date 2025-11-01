@@ -1,14 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import clsx from "clsx"
+import type { ReactNode } from "react"
 
 interface TokenSwatchProps {
   readonly name: string
   readonly token: string
   readonly description?: string
   readonly className?: string
+  readonly children?: ReactNode
 }
 
-const TokenSwatch = ({ name, token, description, className }: TokenSwatchProps) => (
+const TokenSwatch = ({ name, token, description, className, children }: TokenSwatchProps) => (
   <div className={clsx("rounded-lg border border-border bg-card p-sm shadow-xs", className)}>
     <div className="flex items-center justify-between gap-sm">
       <span className="font-semibold text-title-sm">{name}</span>
@@ -17,6 +19,7 @@ const TokenSwatch = ({ name, token, description, className }: TokenSwatchProps) 
     {description ? (
       <p className="mt-2 text-body-sm text-muted-foreground">{description}</p>
     ) : null}
+    {children}
   </div>
 )
 
