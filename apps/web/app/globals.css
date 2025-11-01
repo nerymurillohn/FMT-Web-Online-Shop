@@ -8,7 +8,6 @@
   --font-fraunces: "Fraunces", serif;
   --font-libre-baskerville: "Libre Baskerville", serif;
   --font-cormorant-garamond: "Cormorant Garamond", serif;
-  --radius: var(--radius-base);
 }
 
 @layer base {
