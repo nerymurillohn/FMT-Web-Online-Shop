@@ -49,7 +49,7 @@
 ## 4. Environment Matrix & Pipelines
 | Environment | Purpose | Hosting | Branch Trigger | Deployment Steps |
 | --- | --- | --- | --- | --- |
-| **Local** | Developer iteration | Docker Compose, pnpm | Manual | `pnpm install`, `pnpm dev`, seeded database via Prisma migrations |
+| **Local** | Developer iteration | Docker Compose, npm workspaces | Manual | `npm install`, `npm run dev`, seeded database via Prisma migrations |
 | **Preview** | Feature validation | Vercel Preview + Fly.io Ephemeral | Pull Requests | GitHub Action -> run lint/tests -> build -> deploy preview URLs (auto comment) |
 | **Staging** | UAT, stakeholder demos | Vercel Production (staging project), Fly.io staging | `main` branch | CI runs full test suite, database migrations, smoke tests, notify Slack |
 | **Production** | Live traffic | Vercel Production, Fly.io prod | Git tag `v*` | Manual approval -> CI -> infra checks -> deploy -> run synthetic monitoring |

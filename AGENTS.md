@@ -42,7 +42,7 @@ This document outlines the standards and practices for the development of the Fo
 - Use the `NEXT_PUBLIC_` prefix for variables that need to be exposed to the browser.
 
 ## 8. Verification
-- Before submitting, ensure `pnpm build` completes successfully.
+- Before submitting, ensure `npm run build` completes successfully.
 - All pages must be tested on mobile (360px) and desktop resolutions.
 - The Stripe Checkout flow must be tested in test mode.
 - The "Request Bulk Pricing" functionality must be verified.
